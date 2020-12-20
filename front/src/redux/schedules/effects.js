@@ -10,7 +10,6 @@ import { formatSchedule } from "../../services/schedule";
 
 export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
     dispatch(schedulesSetLoading());
-    console.log(month, year);
     try {
         // エラー処理テスト用
         // const result = await get(`schedules`);

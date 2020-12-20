@@ -12,15 +12,21 @@ import dayjs from "dayjs";
 import AddScheduleDialog from "./components/AddScheduleDialog/container";
 import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container";
 import ErrorSnackbar from "./components/ErrorSnackbar/contaienr";
+import Switch from "./components/hinataSwich/container";
 
 dayjs.locale("ja");
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
+const style = {
+    display: "flex"
+}
 const App = () => (
     <Provider store={store}>
         <MuiPickersUtilsProvider utils={DaysUtils}>
-            <Navigation />
+            <div style={style}>
+                <Navigation />
+                <Switch />
+            </div>
             <CalendarBord />
             <AddScheduleDialog />
             <CurrentScheduleDialog />

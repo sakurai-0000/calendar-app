@@ -8,13 +8,13 @@ import {
     getMonth
 } from "../../services/calendar";
 import Schedule from "../Schedule";
+import { isHinataBirthDay } from "../../services/hinata";
 
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 dayjs.locale("ja");
 
-const calendarElement = ({ day, month, schedules, ...props }) => {
-
+const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
     // 今月以外をグレーダウン
     const currentMonth = getMonth(month);
     const isCurrentMonth = isSameMonth(day, currentMonth);
@@ -28,6 +28,11 @@ const calendarElement = ({ day, month, schedules, ...props }) => {
     // 当日かどうか判断
     const today = dayjs();
     const isToday = isSameDay(day, today);
+
+    // 日向坂メンバーの誕生日か判断
+    const { hinataInfo, checked } = hinata;
+    const isBirthday = hinataInfo.find(info => isHinataBirthDay(info.birthday, day));
+
     return (
         <div className={styles.element}>
             <Typography
@@ -37,7 +42,10 @@ const calendarElement = ({ day, month, schedules, ...props }) => {
                 component="div"
                 color={textColor}
             >
-                <span className={isToday ? styles.today : ''}>
+                <span className={
+                    isBirthday && checked ? styles.birthday
+                        : isToday ? styles.today
+                            : ''}>
                     {day.format(format)}
                 </span>
             </Typography>

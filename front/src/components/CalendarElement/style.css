@@ -16,6 +16,15 @@
   border-radius: 50%;
 }
 
+.birthday {
+  display: inline-block;
+  line-height: 24px;
+  width: 24px;
+  background-color: #7cc8e9;
+  color: #fff;
+  border-radius: 50%;
+}
+
 .schedules {
   overflow: scroll;
   height: calc(18vh - 40px);

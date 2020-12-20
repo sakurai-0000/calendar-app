@@ -16,7 +16,8 @@ import {
 
 const mapStateToProps = state => ({
     calendar: state.calendar,
-    schedules: state.schedules
+    schedules: state.schedules,
+    hinata: state.hinata,
 });
 
 const mapDispatchToProps = dispatch => ({

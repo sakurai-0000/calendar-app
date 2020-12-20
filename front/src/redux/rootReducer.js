@@ -3,12 +3,14 @@ import calendarReducer from "./calendar/reducer";
 import addScheduleReducer from "./addSchedule/reducer";
 import schedulesReducer from "./schedules/reducer";
 import currentScheduleReducer from "./currentSchedule/reducer";
+import hinataInfoReducer from "./hinata/reducer";
 
 const rootReducer = combineReducers({
     calendar: calendarReducer,
     addSchedule: addScheduleReducer,
     currentSchedule: currentScheduleReducer,
     schedules: schedulesReducer,
+    hinata: hinataInfoReducer,
 });
 
 export default rootReducer;
