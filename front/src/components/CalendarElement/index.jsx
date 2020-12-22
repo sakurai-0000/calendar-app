@@ -30,7 +30,7 @@ const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
     const isToday = isSameDay(day, today);
 
     // 日向坂メンバーの誕生日か判断
-    const { hinataInfo, checked } = hinata;
+    const { hinataInfo, isSwitched } = hinata;
     const isBirthday = hinataInfo.find(info => isHinataBirthDay(info.birthday, day));
 
     return (
@@ -43,7 +43,7 @@ const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
                 color={textColor}
             >
                 <span className={
-                    isBirthday && checked ? styles.birthday
+                    isBirthday && isSwitched ? styles.birthday
                         : isToday ? styles.today
                             : ''}>
                     {day.format(format)}

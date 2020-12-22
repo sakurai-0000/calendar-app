@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import SwitchLabels from './presentation';
-import { hinataSetSwitchChech } from "../../redux/hinata/actions";
+import { hinataSetSwitchChech } from "../../../../redux/swich/actions";
 
 const mapStateToProps = state => ({ hinata: state.hinata });
 
 const mapDispatchToProps = dispatch => ({
-    setCheck: checked => {
+    onSwitch: checked => {
         dispatch(hinataSetSwitchChech(checked));
     }
 });

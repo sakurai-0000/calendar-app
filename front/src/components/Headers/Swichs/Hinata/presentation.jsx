@@ -3,11 +3,11 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-const SwitchLabels = ({ hinata, setCheck }) => {
+const SwitchLabels = ({ hinata, onSwitch }) => {
     const isChecked = hinata.checked;
 
     const handleChange = (event) => {
-        setCheck(event.target.checked);
+        onSwitch(event.target.checked);
     };
 
     return (

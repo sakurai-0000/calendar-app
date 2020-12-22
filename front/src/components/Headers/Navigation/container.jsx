@@ -5,9 +5,9 @@ import {
     getPreviousMonth,
     getMonth,
     formatMonth
-} from "../../services/calendar";
-import { calendarSetMonth } from "../../redux/calendar/action";
-import { asyncSchedulesFetchItem } from "../../redux/schedules/effects";
+} from "../../../services/calendar";
+import { calendarSetMonth } from "../../../redux/calendar/action";
+import { asyncSchedulesFetchItem } from "../../../redux/schedules/effects";
 
 const mapStateToProps = state => ({ calendar: state.calendar });
 

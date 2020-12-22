@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CalendarBord from "./components/CalendarBord/container";
-import Navigation from "./components/Navigation/container";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
@@ -12,21 +11,16 @@ import dayjs from "dayjs";
 import AddScheduleDialog from "./components/AddScheduleDialog/container";
 import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container";
 import ErrorSnackbar from "./components/ErrorSnackbar/contaienr";
-import Switch from "./components/hinataSwich/container";
+import Headers from "./components/Headers/container";
 
 dayjs.locale("ja");
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-const style = {
-    display: "flex"
-}
+
 const App = () => (
     <Provider store={store}>
         <MuiPickersUtilsProvider utils={DaysUtils}>
-            <div style={style}>
-                <Navigation />
-                <Switch />
-            </div>
+            <Headers />
             <CalendarBord />
             <AddScheduleDialog />
             <CurrentScheduleDialog />

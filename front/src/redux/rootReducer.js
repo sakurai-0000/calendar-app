@@ -3,7 +3,7 @@ import calendarReducer from "./calendar/reducer";
 import addScheduleReducer from "./addSchedule/reducer";
 import schedulesReducer from "./schedules/reducer";
 import currentScheduleReducer from "./currentSchedule/reducer";
-import hinataInfoReducer from "./hinata/reducer";
+import hinataInfoReducer from "./swich/reducer";
 
 const rootReducer = combineReducers({
     calendar: calendarReducer,

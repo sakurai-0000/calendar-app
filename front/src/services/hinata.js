@@ -3,11 +3,29 @@ import dayjs from "dayjs";
 const hinataInfo = [
     {
         name: 'MATSUDA KONOKA',
-        birthday: '4-27',
+        birthday: '12-20',
     },
     {
         name: 'sample',
         birthday: '12-21',
+    },
+    {
+        name: 'sample',
+        birthday: '12-22',
+    },
+    {
+        name: 'sample',
+        birthday: '12-23',
+    },    {
+        name: 'sample',
+        birthday: '12-24',
+    },
+    {
+        name: 'sample',
+        birthday: '12-25',
+    },    {
+        name: 'sample',
+        birthday: '12-26',
     }
 ]
 
