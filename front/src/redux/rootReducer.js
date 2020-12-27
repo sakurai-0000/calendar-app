@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     addSchedule: addScheduleReducer,
     currentSchedule: currentScheduleReducer,
     schedules: schedulesReducer,
-    hinata: hinataInfoReducer,
+    hinataInfo: hinataInfoReducer,
 });
 
 export default rootReducer;

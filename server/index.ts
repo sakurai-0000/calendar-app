@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 
 import scheduleRouter from "./src/infrastructure/routers/schedule";
+import hinataRouter from "./src/infrastructure/routers/hinata";
 import DB from "./src/infrastructure/db/handler";
 
 dotenv.config();
@@ -10,7 +11,7 @@ const app = express();
 const port = 8000;
 
 app.use(express.json());
-app.use(function(_req, res, next) {
+app.use(function (_req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -26,8 +27,11 @@ db.connect().then(() => {
   // health check
   app.get("/api/hc", (_req, res) => res.send("ok!"));
 
-  // routing
+  // routing schedule
   app.use("/api/schedules", scheduleRouter(db));
+
+  // routing hinata
+  app.use("/api/hinata", hinataRouter(db));
 
   // 起動
   app.listen(port, () => console.log(`Example app listening on port ${port}!`));

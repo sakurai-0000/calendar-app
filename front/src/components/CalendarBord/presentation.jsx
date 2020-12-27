@@ -12,7 +12,7 @@ const calendar = ({
     openAddScheduleDialog,
     openCurrentScheduleDialog,
     fetchSchedule,
-    hinata
+    hinataInfo,
 }) => {
     // reactの状態が更新されるたびに呼び出されるAPI
     // 第２引数を配列で指定すると指定された変数が更新された時だけuseEffect()が呼び出される
@@ -36,7 +36,7 @@ const calendar = ({
                         </Typography>
                     </li>
                 ))}
-                {calendar.map(({ date, schedules }) => (
+                {calendar.map(({ date, schedules, hinataSchedules }) => (
                     <li
                         key={date.toISOString()}
                         onClick={() => openAddScheduleDialog(date)}
@@ -45,8 +45,9 @@ const calendar = ({
                             day={date}
                             month={month}
                             schedules={schedules}
-                            hinata={hinata}
+                            hinataSchedules={hinataSchedules}
                             onClickSchedule={openCurrentScheduleDialog}
+                            hinataInfo={hinataInfo}
                         />
                     </li>
                 ))}

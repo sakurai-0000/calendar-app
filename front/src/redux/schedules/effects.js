@@ -12,9 +12,13 @@ export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
     dispatch(schedulesSetLoading());
     try {
         // エラー処理テスト用
-        // const result = await get(`schedules`);
         const result = await get(`schedules?month=${month}&year=${year}`);
-        const formatedSchedule = result.map(r => formatSchedule(r));
+        const resultHinata = await get(`hinata?month=${month}&year=${year}`);
+
+        const formatedSchedule = {
+            schedule : result.map(r => formatSchedule(r)),
+            hinataSchedule : resultHinata.map(r => formatSchedule(r)),
+        };
         dispatch(schedulesFetchItem(formatedSchedule));
     } catch (err) {
         console.log(err);

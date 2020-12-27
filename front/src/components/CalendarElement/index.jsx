@@ -14,7 +14,8 @@ import dayjs from "dayjs";
 import "dayjs/locale/ja";
 dayjs.locale("ja");
 
-const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
+const calendarElement = ({ day, month, schedules, hinataSchedules, hinataInfo, ...props }) => {
+
     // 今月以外をグレーダウン
     const currentMonth = getMonth(month);
     const isCurrentMonth = isSameMonth(day, currentMonth);
@@ -30,9 +31,13 @@ const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
     const isToday = isSameDay(day, today);
 
     // 日向坂メンバーの誕生日か判断
-    const { hinataInfo, isSwitched } = hinata;
-    const isBirthday = hinataInfo.find(info => isHinataBirthDay(info.birthday, day));
+    const { isSwitched } = hinataInfo;
+    const isBirthday = hinataSchedules.find(hinata => {
+        return isHinataBirthDay(hinata.date, day)
+    });
 
+    // 日向坂メンバーの誕生日の時とSwitchがonの時、スケジュールにマージ
+    const newSchedules = !isBirthday || !isSwitched ? schedules : [...schedules, isBirthday];
     return (
         <div className={styles.element}>
             <Typography
@@ -43,18 +48,17 @@ const calendarElement = ({ day, month, hinata, schedules, ...props }) => {
                 color={textColor}
             >
                 <span className={
-                    isBirthday && isSwitched ? styles.birthday
-                        : isToday ? styles.today
-                            : ''}>
+                    isToday ? styles.today
+                        : ''}>
                     {day.format(format)}
                 </span>
             </Typography>
             <div className={styles.schedules}>
-                {schedules.map(e => (
+                {newSchedules.map(e => (
                     <Schedule key={e.id} schedule={e} {...props} />
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 

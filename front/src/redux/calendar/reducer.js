@@ -6,12 +6,6 @@ import { formatMonth } from "../../services/calendar";
 const day = dayjs();
 
 const init = formatMonth(day);
-/*
-const init = {
-    year: day.year(),
-    month: day.month() + 1
-}
-*/
 
 const calendarReduder = (state = init, action) => {
     const { type, payload } = action;

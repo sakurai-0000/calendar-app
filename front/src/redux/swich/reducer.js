@@ -1,10 +1,8 @@
 import {
     HINATA_SET_SWICH_CHECH,
 } from "./actions";
-import { setBirthDay } from "../../services/hinata";
 
 const init = {
-    hinataInfo: setBirthDay(),
     isSwitched: false,
 };
 

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SwitchLabels from './presentation';
 import { hinataSetSwitchChech } from "../../../../redux/swich/actions";
 
-const mapStateToProps = state => ({ hinata: state.hinata });
+const mapStateToProps = state => ({ hinataInfo: state.hinataInfo });
 
 const mapDispatchToProps = dispatch => ({
     onSwitch: checked => {

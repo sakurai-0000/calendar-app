@@ -14,11 +14,13 @@ import {
     currentScheduleOpenDialog
 } from "../../redux/currentSchedule/actions";
 
-const mapStateToProps = state => ({
-    calendar: state.calendar,
-    schedules: state.schedules,
-    hinata: state.hinata,
-});
+const mapStateToProps = state => {
+    return {
+        calendar: state.calendar,
+        schedules: state.schedules,
+        hinataInfo: state.hinataInfo,
+    };
+};
 
 const mapDispatchToProps = dispatch => ({
     openAddScheduleDialog: d => {
@@ -39,7 +41,8 @@ const mapDispatchToProps = dispatch => ({
 const mergeProps = (stateProps, dispatchProps) => {
     const {
         calendar: month,
-        schedules: { items: schedules }
+        schedules: { items: schedules },
+        hinataInfo
     } = stateProps;
 
     const calendar = setSchedules(createCalendar(month), schedules);
@@ -49,7 +52,8 @@ const mergeProps = (stateProps, dispatchProps) => {
         ...dispatchProps,
         fetchSchedule: () => dispatchProps.fetchSchedule(month),
         calendar,
-        month
+        month,
+        hinataInfo,
     };
 };
 

@@ -3,8 +3,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-const SwitchLabels = ({ hinata, onSwitch }) => {
-    const isChecked = hinata.checked;
+const SwitchLabels = ({ hinataInfo, onSwitch }) => {
+    const isChecked = hinataInfo.checked;
 
     const handleChange = (event) => {
         onSwitch(event.target.checked);

@@ -35,13 +35,13 @@ describe("schedule modelのテスト", () => {
       location: "会議室"
     };
 
-    const result = await scheduleModel.store(schedule);
+    const result = await scheduleModel.store(schedule, "schedules");
     console.log(result);
   });
 
   it("find", async () => {
     const scheduleModel = new ScheduleModel(db);
-    const result = await scheduleModel.find(1);
+    const result = await scheduleModel.find(1, "schedules");
 
     console.log(result);
   });
