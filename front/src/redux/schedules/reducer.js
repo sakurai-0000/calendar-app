@@ -16,7 +16,7 @@ const init = {
 
 const schedulesReducer = (state = init, action) => {
     const { type, payload, error } = action;
-
+    console.log(payload);
     switch (type) {
         case SCHEDULES_ADD_ITEM:
             return {

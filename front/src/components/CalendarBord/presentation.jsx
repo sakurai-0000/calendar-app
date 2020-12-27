@@ -35,7 +35,7 @@ const calendar = ({
                         </Typography>
                     </li>
                 ))}
-                {calendar.map(({ date, schedules }) => (
+                {calendar.map(({ date, schedules, hinataSchedules }) => (
                     <li
                         key={date.toISOString()}
                         onClick={() => openAddScheduleDialog(date)}
@@ -44,6 +44,7 @@ const calendar = ({
                             day={date}
                             month={month}
                             schedules={schedules}
+                            hinataSchedules={hinataSchedules}
                             onClickSchedule={openCurrentScheduleDialog}
                         />
                     </li>

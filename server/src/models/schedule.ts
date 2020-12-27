@@ -23,8 +23,11 @@ export default class ScheduleModel extends BaseModel {
     const lastDay = targetMonth.endOf("month").toISOString();
 
     return await this.db.query<Schedule[]>(
-      "select * from schedules where date between ? and ?;",
-      [firstDay, lastDay]
+      `select * from schedules where date between ? and ?;`,
+      [
+        firstDay,
+        lastDay
+      ]
     );
   }
 
@@ -34,7 +37,7 @@ export default class ScheduleModel extends BaseModel {
    */
   async find(id: number) {
     const schedules = await this.db.query<Schedule[]>(
-      "select * from schedules where id = ?",
+      `select * from schedules where id = ?`,
       [id]
     );
     return schedules[0];
@@ -46,7 +49,7 @@ export default class ScheduleModel extends BaseModel {
    */
   async store(schedule: Schedule) {
     const result = await this.db.query<{ insertId: number }>(
-      "insert into schedules (title, description, date, location) values (?, ?, ?, ?);",
+      `insert into schedules (title, description, date, location) values (?, ?, ?, ?);`,
       [
         schedule.title,
         schedule.description,
@@ -77,6 +80,7 @@ export default class ScheduleModel extends BaseModel {
   async createTestData() {
     const testData = this.testData();
     const newData = await Promise.all(
+      // testData.map(async d => await this.store(d))
       testData.map(async d => await this.store(d))
     );
 
@@ -127,7 +131,6 @@ export default class ScheduleModel extends BaseModel {
           .toDate()
       }
     ];
-
     return testData;
   }
 }

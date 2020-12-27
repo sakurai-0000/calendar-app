@@ -14,10 +14,13 @@ import {
     currentScheduleOpenDialog
 } from "../../redux/currentSchedule/actions";
 
-const mapStateToProps = state => ({
-    calendar: state.calendar,
-    schedules: state.schedules
-});
+const mapStateToProps = state => {
+    console.log(state.schedules);
+    return {
+        calendar: state.calendar,
+        schedules: state.schedules || []
+    };
+};
 
 const mapDispatchToProps = dispatch => ({
     openAddScheduleDialog: d => {

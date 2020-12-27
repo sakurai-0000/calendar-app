@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ja";
 dayjs.locale("ja");
 
-const calendarElement = ({ day, month, schedules, ...props }) => {
+const calendarElement = ({ day, month, schedules, hinataSchedules, ...props }) => {
 
     // 今月以外をグレーダウン
     const currentMonth = getMonth(month);
@@ -28,6 +28,7 @@ const calendarElement = ({ day, month, schedules, ...props }) => {
     // 当日かどうか判断
     const today = dayjs();
     const isToday = isSameDay(day, today);
+
     return (
         <div className={styles.element}>
             <Typography

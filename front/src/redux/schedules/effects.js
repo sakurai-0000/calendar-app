@@ -10,12 +10,22 @@ import { formatSchedule } from "../../services/schedule";
 
 export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
     dispatch(schedulesSetLoading());
-    console.log(month, year);
     try {
         // エラー処理テスト用
         // const result = await get(`schedules`);
+        // const result = await get(`schedules?month=${month}&year=${year}`);
         const result = await get(`schedules?month=${month}&year=${year}`);
-        const formatedSchedule = result.map(r => formatSchedule(r));
+        const resultHinata = await get(`hinata?month=${month}&year=${year}`);
+
+        // const formatedSchedule = result.map(r => formatSchedule(r));
+        // const formatedHinataSchedule = resultHinata.map(r => formatSchedule(r));
+        // console.log(formatedSchedule);
+        // console.log(formatedHinataSchedule);
+        const formatedSchedule = {
+            schedule : result.map(r => formatSchedule(r)),
+            hinataSchedule : resultHinata.map(r => formatSchedule(r)),
+        };
+        console.log(formatedSchedule);
         dispatch(schedulesFetchItem(formatedSchedule));
     } catch (err) {
         console.log(err);
